@@ -1,0 +1,33 @@
+name: Build mp4v2 Library
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y cmake make gcc g++
+
+    - name: Build mp4v2
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: mp4v2
+        path: build/libmp4v2.a
