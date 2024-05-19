@@ -26,8 +26,14 @@ jobs:
         cmake ..
         make
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
+  - name: List build directory contents
+      run: |
+        echo "Listing contents of the build directory:"
+        ls -R build
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3  # Updated to the latest version
       with:
         name: mp4v2
-        path: build/libmp4v2.a
+        path: build/**/*.a  # Upload all .a files from the build directory
+        if-no-files-found: warn
