@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get install -y cmake make gcc g++
@@ -27,7 +27,7 @@ jobs:
         make
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: mp4v2
         path: build/libmp4v2.a
