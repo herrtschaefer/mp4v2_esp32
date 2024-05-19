@@ -26,7 +26,7 @@ jobs:
         cmake ..
         make
 
-  - name: List build directory contents
+    - name: List build directory contents
       run: |
         echo "Listing contents of the build directory:"
         ls -R build
